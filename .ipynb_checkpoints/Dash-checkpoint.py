@@ -26,9 +26,17 @@ data = pd.DataFrame({
 data.set_index("Fecha", inplace=True)
 
 # Crear subplots para el dashboard
-fig = sp.make_subplots(rows=3, cols=2, subplot_titles=("Producción de Petróleo (Miles de Barriles)", 
-                                                       "Ingresos y Costos Operativos",
-                                                       "Utilidades", "Emisiones de CO2"))
+fig = sp.make_subplots(
+    rows=3, cols=2, 
+    subplot_titles=(
+        "Producción de Petróleo (Miles de Barriles)", 
+        "Ingresos y Costos Operativos",
+        "Utilidades", 
+        "Emisiones de CO2"
+    ),
+    vertical_spacing=0.2,  # Espaciado vertical entre subplots
+    horizontal_spacing=0.1  # Espaciado horizontal entre subplots
+)
 
 # Gráfico 1: Producción de petróleo
 fig.add_trace(go.Scatter(x=data.index, y=data["Produccion_petroleo"], mode='lines+markers', name="Producción de Petróleo"),
@@ -49,8 +57,14 @@ fig.add_trace(go.Scatter(x=data.index, y=data["Emisiones_CO2"], mode='lines+mark
               row=2, col=2)
 
 # Ajustar layout del dashboard
-fig.update_layout(title="Dashboard de Operaciones de una Refinería de Petróleo",
-                  height=700, width=1000, showlegend=True, template="plotly_dark")
+fig.update_layout(
+    title="Dashboard de Operaciones de una Refinería de Petróleo",
+    height=900,  # Aumenta el tamaño para más espacio
+    width=1200,  # Aumenta el ancho para más espacio
+    showlegend=True, 
+    template="plotly_dark",
+    margin=dict(l=50, r=50, t=50, b=50)  # Márgenes
+)
 
 fig.update_xaxes(title_text="Fecha", row=1, col=1)
 fig.update_yaxes(title_text="Miles de Barriles", row=1, col=1)
@@ -62,4 +76,4 @@ fig.update_xaxes(title_text="Fecha", row=2, col=2)
 fig.update_yaxes(title_text="Toneladas de CO2", row=2, col=2)
 
 # Mostrar el dashboard en Streamlit
-st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
