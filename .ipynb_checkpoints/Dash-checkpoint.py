@@ -1,13 +1,8 @@
 import pandas as pd
 import numpy as np
-import cufflinks as cf
+import streamlit as st
 import plotly.subplots as sp
 from plotly import graph_objs as go
-import streamlit as st
-
-# Configuración de Cufflinks para modo offline y de tema
-cf.go_offline()
-cf.set_config_file(theme='pearl', offline=True)
 
 # Generar datos ficticios
 np.random.seed(0)
@@ -31,7 +26,7 @@ fig = sp.make_subplots(
         "Utilidades", 
         "Emisiones de CO2"
     ),
-    vertical_spacing=0.1,  # Espaciado vertical entre subplots
+    vertical_spacing=0.15,  # Espaciado vertical entre subplots
     horizontal_spacing=0.2  # Espaciado horizontal entre subplots
 )
 
@@ -56,11 +51,11 @@ fig.add_trace(go.Scatter(x=data.index, y=data["Emisiones_CO2"], mode='lines+mark
 # Ajustar layout del dashboard
 fig.update_layout(
     title="Dashboard de Operaciones de una Refinería de Petróleo",
-    height=900,  # Aumenta el tamaño para más espacio
-    width=1400,  # Aumenta el ancho para más espacio
+    height=1000,  # Tamaño vertical del dashboard
+    width=1400,   # Tamaño horizontal del dashboard
     showlegend=True, 
     template="plotly_dark",
-    margin=dict(l=30, r=30, t=50, b=50)  # Márgenes
+    margin=dict(l=30, r=30, t=50, b=50)  # Márgenes ajustados
 )
 
 fig.update_xaxes(title_text="Fecha", row=1, col=1)
