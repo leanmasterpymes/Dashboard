@@ -63,7 +63,7 @@ fig.update_layout(
     width=1200,  # Aumenta el ancho para más espacio
     showlegend=True, 
     template="plotly_dark",
-    margin=dict(l=50, r=50, t=50, b=50)  # Márgenes
+    margin=dict(l=80, r=50, t=50, b=50)  # Márgenes
 )
 
 fig.update_xaxes(title_text="Fecha", row=1, col=1)
