@@ -27,7 +27,7 @@ fig = sp.make_subplots(
         "Emisiones de CO2"
     ),
     vertical_spacing=0.15,  # Espaciado vertical entre subplots
-    horizontal_spacing=0.2,  # Espaciado horizontal entre subplots
+    horizontal_spacing=0.20,  # Espaciado horizontal entre subplots
 )
 
 # Gráfico 1: Producción de petróleo
@@ -51,11 +51,11 @@ fig.add_trace(go.Scatter(x=data.index, y=data["Emisiones_CO2"], mode='lines+mark
 # Ajustar layout del dashboard
 fig.update_layout(
     title="Dashboard de Operaciones de una Refinería de Petróleo",
-    height=1100,  # Aumenta el tamaño para más espacio
-    width=1500,  # Aumenta el ancho para más espacio
+    height=900,  # Aumenta el tamaño para más espacio
+    width=1400,  # Aumenta el ancho para más espacio
     showlegend=True, 
     template="plotly_dark",
-    margin=dict(l=40, r=40, t=50, b=50)  # Márgenes
+    margin=dict(l=50, r=50, t=50, b=50)  # Márgenes
 )
 
 fig.update_xaxes(title_text="Fecha", row=1, col=1)
@@ -67,6 +67,6 @@ fig.update_yaxes(title_text="Millones de USD", row=2, col=1)
 fig.update_xaxes(title_text="Fecha", row=2, col=2)
 fig.update_yaxes(title_text="Toneladas de CO2", row=2, col=2)
 
-# Mostrar el dashboard en Streamlit
+# Configuración en Streamlit
 st.title("Dashboard de Operaciones de una Refinería de Petróleo")
 st.plotly_chart(fig, use_container_width=True)
