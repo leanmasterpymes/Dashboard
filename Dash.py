@@ -3,6 +3,7 @@ import numpy as np
 import cufflinks as cf
 import plotly.subplots as sp
 from plotly import graph_objs as go
+import streamlit as st
 
 # Configuración de Cufflinks para modo offline y de tema
 cf.go_offline()
@@ -71,6 +72,6 @@ fig.update_yaxes(title_text="Millones de USD", row=2, col=1)
 fig.update_xaxes(title_text="Fecha", row=2, col=2)
 fig.update_yaxes(title_text="Toneladas de CO2", row=2, col=2)
 
-
 # Mostrar el dashboard en Streamlit
+st.title("Dashboard de Operaciones de una Refinería de Petróleo")
 st.plotly_chart(fig, use_container_width=True)
